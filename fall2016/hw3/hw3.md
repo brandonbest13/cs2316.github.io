@@ -84,7 +84,7 @@ def __repr__(self):
     Usage Examples:
     >>> cat = Cat("Garbage", "grey")    ### It is OK if this fails after you add additional attributes to your cats.
     >>> cat                             ### Just maintain the same format for additional attributes as well
-    [('name', 'Garbage'), ('color', 'grey'), ('fav_food', 'Meow Mix')]
+    [('name', 'Garbage'), ('color', 'grey'), ('fav_food', 'Meow Mix'), ('is_hungry', 'True')]
     """
 ```
 
@@ -95,12 +95,12 @@ def __str__(self):
     Parameters: self
     
     Return: A String containing a cat emoji (of your choosing) and a newline character and the cat's name
-    """
     Usage Examples:
     >>> cat = Cat("Sprinkles", "white")
     >>> print(cCat)
     =^.^=
     Sprinkles
+    """
 ```
 
 ```Python
@@ -126,7 +126,7 @@ def feed(self, food):
 ### Main
 
 ```Python
-Main:
+def main:
 """Main asks for a username using user input.
 Asks <username> to begin the game and uses a while loop to continuously accept user input until user quits the sim with “quit.”
 "quit" and "census" are user input calls that will end the sim and call the __repr__ method for ALL cats, respectively.
@@ -156,13 +156,6 @@ garfield.feed(“lasagna”)
 >>>
 ```
 
-The following may be helpful to use for capturing print statements to the console
-
-```Python
-import sys
-sys.stdout = open('README.txt', 'a')
-print 'test'
-```
 
 User input: “census” calls the `__repr__` method on all instances of cats.
 
@@ -179,6 +172,20 @@ Ex:
 adopt  =  Cat(userin(“Congrats! What’s your new cat’s name?”), userin(“What color?”), userin(“What’s its favorite food?”))
 feed <cat>  =  <cat>.feed(userin(“Feed what food?”))
 census  =  <cat> … ##for all cats that exist
+```
+
+The following may be helpful for capturing print statements to the console
+
+```Python
+import sys
+temp = sys.stdout
+
+sys.stdout = open('README.txt', 'a')    ##This line sends a print statement to README.txt
+print ('This is only visible in the text file')
+sys.stdout.close()  ##Always close your files when you finish with them or rewrite their variables
+
+sys.stdout = temp   ##This line resets the print statements to the console
+print('This is visible on the console')
 ```
 
 ## Submission Instructions
