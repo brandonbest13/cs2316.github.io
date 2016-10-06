@@ -174,19 +174,14 @@ feed <cat>  =  <cat>.feed(userin(“Feed what food?”))
 census  =  <cat> … ##for all cats that exist
 ```
 
-The following may be helpful for capturing print statements to the console
+The following may be helpful for capturing print statements to the console:
+- Write a print statement whenever necessary
+    - Immediately after the print statement, append the same output to README.txt
+- When the user types to the console, append their input to README.txt
+    - Then respond appropriately to whatever that response was
+- When your program ends, be sure that your README.txt has been closed
 
-```Python
-import sys
-temp = sys.stdout
 
-sys.stdout = open('README.txt', 'a')    ##This line sends a print statement to README.txt
-print ('This is only visible in the text file')
-sys.stdout.close()  ##Always close your files when you finish with them or rewrite their variables
-
-sys.stdout = temp   ##This line resets the print statements to the console
-print('This is visible on the console')
-```
 
 ## Submission Instructions
 
