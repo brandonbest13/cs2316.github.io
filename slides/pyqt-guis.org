@@ -31,7 +31,11 @@
 
 - PyQt/PySide was once difficult to install because Qt was difficult to install, but the Anaconda folks fixed that.
 
-- So we'll use PyQt, PyQt4 to be precise.
+- So we'll use PyQt, PyQt5 to be precise. Install with:
+
+#+BEGIN_SRC python
+$ conda install pyqt
+#+END_SRC
 
 ** PyQt
 
@@ -47,14 +51,15 @@
 
 #+BEGIN_SRC python
 import sys
-from PyQt4 import QtGui
+from PyQt5.QtWidgets import QApplication, QWidget
 
-app = QtGui.QApplication(sys.argv)
+app = QApplication(sys.argv)
 
-w = QtGui.QWidget()
+w = QWidget()
 w.setWindowTitle('Hello PyQt!')
 w.show()
-sys.exit(app.exec_())
+return_code = app.exec_()
+sys.exit(return_code)
 #+END_SRC
 
 Online: [[../code/gui/helloqt.py][helloqt.py]]
@@ -66,6 +71,21 @@ Online: [[../code/gui/helloqt.py][helloqt.py]]
 3. Set paramters of the main window, create and add child widgets, etc.
 4. Show main application window
 5. Start the app (~app.exec_()~)
+
+** Basic Qt Application Elements
+
+#+BEGIN_SRC python
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget
+
+app = QApplication(sys.argv)
+
+w = QWidget()
+w.setWindowTitle('Hello PyQt!')
+w.show()
+return_code = app.exec_()
+sys.exit(return_code)
+#+END_SRC
 
 ** Examples
 
