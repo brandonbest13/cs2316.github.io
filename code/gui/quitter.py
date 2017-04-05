@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 
 import sys
-from PyQt4 import QtGui, QtCore
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
+from PyQt5.QtCore import QCoreApplication
 
-class MainWindow(QtGui.QWidget):
+class MainWindow(QWidget):
 
     def __init__(self):
         super(MainWindow, self).__init__()
 
-        qbtn = QtGui.QPushButton('Quit', self)
-        qbtn.clicked.connect(QtCore.QCoreApplication.instance().quit)
+        qbtn = QPushButton('Quit', self)
+        qbtn.clicked.connect(QCoreApplication.instance().quit)
         qbtn.resize(qbtn.sizeHint())
         qbtn.move(50, 50)
 
@@ -17,7 +18,7 @@ class MainWindow(QtGui.QWidget):
         self.setWindowTitle('Quit button')
 
 if __name__=='__main__':
-    app = QtGui.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     main = MainWindow()
     main.show()
     sys.exit(app.exec_())

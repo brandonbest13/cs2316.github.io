@@ -1,9 +1,9 @@
 import sys
-from PyQt4 import QtGui
+from PyQt5.QtWidgets import QApplication, QWidget
 
-app = QtGui.QApplication(sys.argv)
+app = QApplication(sys.argv)
 
-w = QtGui.QWidget()
+w = QWidget()
 w.setWindowTitle('Hello PyQt!')
 w.show()
 return_code = app.exec_()

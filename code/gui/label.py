@@ -1,9 +1,9 @@
 import sys
-from PyQt4 import QtGui
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel
 
-app = QtGui.QApplication(sys.argv)
-w = QtGui.QWidget()
+app = QApplication(sys.argv)
+w = QWidget()
 w.setWindowTitle('Hello PyQt!')
-lbl = QtGui.QLabel('Hello, label!', w)
+lbl = QLabel('Hello, label!', w)
 w.show()
 sys.exit(app.exec_())
