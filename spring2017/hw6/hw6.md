@@ -70,7 +70,9 @@ The Admin View page should also have a "back" or "logout" button that redirects 
 ## Main
 The main function should take in command line arguments and will be called in the following manner:
 `$ python HW6.py GT.db Students.xml Courses.csv Admins.csv`
-You should then manage your database as necessary using the filenames provided and your `xml_to_db` and `csv_to_db` functions before instantiating a GUI object using a connection object for the database passed in as the first argument.
+You should then manage your database as necessary using the filenames provided, a connection object, and your `xml_to_db` and `csv_to_db` functions. Then instatiate a GUI object that accepts, as a paramter, the connection object.
+### Reminder
+Always remember the block of code that allows us to call main from the cmd/terminal.
 
 ## Rubric
 - 15 points xml_to_db implemented correctly
