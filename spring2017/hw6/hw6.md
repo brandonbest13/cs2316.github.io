@@ -21,17 +21,19 @@ Courseoff is in a state of disrepair and T-Square is... well, T-Square. You need
 # Solution Description
 
 You'll store data in a SQLite database and import data from XML and CSV files using a Python script. You will build a GUI using PyQt to allow easy access to relevant information from the database
+## Files
+[`schedule_schema.sql`](schedule_schema.sql), [`Admins.csv`](Admins.csv), [`Courses.csv`](Courses.csv), [`Students.xml`](Students.xml)
 
 ### Preparing Your Database
 
-You've been provided with a database script to create the database (download [`schedj-schema.sql`](schedj-schema.sql)). Run `sqlite3` with the database file name `GTcatalog.db` as an argument and run your database creation script on this database.  This will look something like:
+You've been provided with a database script to create the database (download [`schedule_schema.sql`](schedule_schema.sql)). Run `sqlite3` with the database file name `GTcatalog.db` as an argument and run your database creation script on this database.  This will look something like:
 
 ```sh
 $ sqlite3 GT.db
 SQLite version 3.7.9 2011-11-01 00:52:41
 Enter ".help" for instructions
 Enter SQL statements terminated with a ";"
-sqlite> .read schedj-schema.sql
+sqlite> .read schedule_schema.sql
 sqlite> .exit
 ```
 
@@ -60,17 +62,23 @@ There should be clearly marked entries for all necessary information to the Stud
 ### Courses Page
 This window should list out the available courses and have a back button allowing the user to log out.
 
+### Admin Page
+Professors are considered Admins and have a special view when they log in. You should have an Admin table using the provided Admins.csv
+If the credentials given on the Login Page do not match a Student, but do match an Admin, the login button should direct to a page title "Admin View" with the number of students currently registered for the course taught by the admin user.
+The Admin View page should also have a "back" or "logout" button that redirects to the Login Page so a Student or another Admin can sign in.
+
 ## Main
 The main function should take in command line arguments and will be called in the following manner:
-`$ python HW6.py GT.db students.xml courses.csv admins.csv`
+`$ python HW6.py GT.db Students.xml Courses.csv Admins.csv`
 You should then manage your database as necessary using the filenames provided and your `xml_to_db` and `csv_to_db` functions before instantiating a GUI object using a connection object for the database passed in as the first argument.
 
 ## Rubric
 - 15 points xml_to_db implemented correctly
 - 15 points csv_to_db implemented correctly
-- 20 points properly create GT.db and populate it
-- 25 points Login Page works as described and only advances if credentials are valid
-- 25 points Courses Page displays available courses and includes a back button that goes to the Login Page
+- 10 points properly create GT.db and populate it
+- 20 points Login Page works as described and only advances if credentials are valid
+- 20 points Courses Page displays available courses and includes a back button that goes to the Login Page
+- 20 points Admin Page is accesible only to admin users and displays the proper information
 
 # Extra Credit
 
@@ -86,14 +94,14 @@ Allow students to register for a course by implementing
 A button on the Courses Page labeled "Weekly View" should bring up a window that shows what the student schedule looks like based on the courses that are currently in the registered table matching the logged-in Student's username.
 
 ### Implement Restrictions (25 points)
-Included in the courses.csv are restrictions for major and year; a student must also have less than or equal to 21 credit hours and no overlapping class times. If the current student tries to register for a course does not meet those 4 restriction requirements, your program should present a warning message; and the registration for that course should fail.
+Included in the Courses.csv are restrictions for major and year; a student must also have less than or equal to 21 credit hours and no overlapping class times. If the current student tries to register for a course does not meet those 4 restriction requirements, your program should present a warning message; and the registration for that course should fail.
 - 5 points for each type of restriction properly implemented
 - 5 points for the warning message giving the specific kind of restriction that caused conflict.
 
 ### Admin Utility (30 points)
-Professors are considered Admins and have a special view when they log in. You should have an Admin table using the provided admin.csv
-If the credentials given on the Login Page do not match a Student, but do match an Admin, the login button should direct to a page title "Admin View" with the number of students currently registered for the course taught by the admin user.
-The Admin View page should also have a "back" or "logout" button that redirects to the Login Page so a Student or another Admin can sign in.
+Professors want to be able to do more than just view registration for their class.
+They want to have a page that lets them see registration numbers for all classes. Similar to the Student view, but including the total number of students registered for each class.
+Admin Users (Professors) should also be able to add a course to the listing in the database. So an Admin should see a button labeled "add course" that uses text entry boxes to gather necessary information and insert a new course into the database.
 
 ### Aesthetic Appeal (10 points)
 Nobody likes an ugly GUI, so here's a little incentive to make it look nice and pretty. (niceness and prettiness are at the discretion of your grading TA, so consider your audience)
@@ -103,6 +111,7 @@ Nobody likes an ugly GUI, so here's a little incentive to make it look nice and 
 - Review the [example SQL code](https://github.com/cs2316/cs2316.github.io/tree/master/code/databases) on the course web site.
 - The Weekly View can be as 'pretty' as anything from Oscar's Week-at-a-glance to Courseoff
 - For the Aesthetic Appeal component, consider using different colors, fonts, and maybe even images (just remember to submit all necessary files when you submit the hw to T-Square).
+- If you are confused as to what should be passed to the database to insert or request information, try checking the schedule_schema.sql file.
 
 ## Turn-in Procedure
 
