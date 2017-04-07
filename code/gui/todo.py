@@ -24,6 +24,7 @@ class MainWindow(QWidget):
         self.list_view = QListView()
         self.list_model = QStandardItemModel(self.list_view)
         self.list_view.setModel(self.list_model)
+
         self.line_edit = QLineEdit()
         self.add_button = QPushButton("Add")
         self.add_button.setEnabled(False)
@@ -41,6 +42,7 @@ class MainWindow(QWidget):
         list_item = QStandardItem(self.line_edit.text())
         self.list_model.appendRow(list_item)
         self.line_edit.setText('')
+        self.line_edit.setFocus()
 
     def enable_add_button(self):
         if len(self.line_edit.text()) == 0:

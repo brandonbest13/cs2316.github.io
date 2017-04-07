@@ -15,6 +15,7 @@
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, keywordstyle=\bf}
 #+LaTeX_HEADER: \setbeamertemplate{footline}[frame number]
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \setlength{\parskip}{\baselineskip}
 
 * PyQt GUIs
 
@@ -49,6 +50,12 @@ $ conda install pyqt
 
 ** Hello, PyQt
 
+*** helloqt.py                                                :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.45
+    :END:
+
+Running [[../code/gui/helloqt.py][helloqt.py]]
 #+BEGIN_SRC python
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget
@@ -62,7 +69,14 @@ return_code = app.exec_()
 sys.exit(return_code)
 #+END_SRC
 
-Online: [[../code/gui/helloqt.py][helloqt.py]]
+*** Screenshot :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.45
+    :END:
+
+will show:
+[[file:helloqt.png]]
+
 
 ** Basic PyQt App Outline
 
@@ -74,17 +88,204 @@ Online: [[../code/gui/helloqt.py][helloqt.py]]
 
 ** Basic Qt Application Elements
 
+Import the widgets we'll use:
 #+BEGIN_SRC python
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget
+#+END_SRC
 
+
+Create a ~QApplication~ object, passing the command-line arguments to the constructor:
+#+BEGIN_SRC python
 app = QApplication(sys.argv)
+#+END_SRC
 
+
+Create the main window and set its paramters:
+#+BEGIN_SRC python
 w = QWidget()
 w.setWindowTitle('Hello PyQt!')
+#+END_SRC
+
+
+Show the main window and start the application:
+#+BEGIN_SRC python
 w.show()
 return_code = app.exec_()
 sys.exit(return_code)
+#+END_SRC
+
+
+** Structure of (Py)Qt Library
+
+
+Three main PyQt modules:
+- QtCore -- Core non-GUI utilities
+- QtGui -- window system integration, event handling, 2D graphics and imaging, fonts
+- QtWidgets -- the basic elements of UIs: labels, buttons, text input, lists, tables, menus, toolbars
+
+Also several special-purpose modules:
+  - QtMultimedia, QtBluetooth, QtNetwork, QtPositioning, Enginio, QtWebSockets, QtWebKit, QtWebKitWidgets, QtXml, QtSvg, QtSql, QtTest
+
+** Adding Child Widgets
+
+In [[../code/gui/label.py][label.py]] we begin as before:
+#+BEGIN_SRC python
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel
+
+app = QApplication(sys.argv)
+w = QWidget()
+w.setWindowTitle('Hello PyQt!')
+#+END_SRC
+A ~QWidget~ with no parent is a window. Note that /parent/ means the owner of the widget on the screen, not the superclass.
+
+We supply two Arguments to the ~QLabel~ constructor: the text (or image) to display, and the parent. Here the parent widget is our main application window, ~w~:
+#+BEGIN_SRC python
+lbl = QLabel('Hello, label!', w)
+w.show()
+sys.exit(app.exec_())
+#+END_SRC
+
+The label widget will appear in the upper left corner of it's parent widget, the main window. In future examples we'll see how to lay out widgets on their parents.
+
+[[file:label.png]]
+
+** Buttons, Signals and Slots
+
+In  [[../code/gui/button.py][button.py]] the following creates a ~QPushButton~ with "Push it ..." as its text and the main application window as its parent:
+#+BEGIN_SRC python
+#!/usr/bin/env python3
+
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
+app = QApplication(sys.argv)
+w = QWidget()
+w.setWindowTitle('Hello PyQt!')
+btn = QPushButton('Push it ...', w)
+#+END_SRC
+
+~QPushButton~ widgets emit /signals/ when certain events happen, such as when they are clicked. These signals can be connected to any number of /slots/, which are simply Python callables (functions, methods, or lambda expressions). Here we connect the button to two slots, a defined function and a lambda expression:
+
+#+BEGIN_SRC python
+def up():
+    print("up!")
+
+btn.clicked.connect(up)
+btn.clicked.connect(lambda: print('real good!'))
+w.show()
+sys.exit(app.exec_())
+#+END_SRC
+
+** Message Boxes
+
+Four standard message boxes, invoked with one of these class methods:
+
+- ~QMessageBox.critical~
+- ~QMessageBox.information~
+- ~QMessageBox.question~
+- ~QMessageBox.warning~
+
+Arguments are: parent, message box title, message, buttons, and (optional)default button.
+
+For example, here's a simple information message box:
+#+BEGIN_SRC python
+reply = QMessageBox.information(main_window,
+                                "Message Box Title",
+                                 "The message.",
+                                 QMessageBox.Ok)
+#+END_SRC
+
+
+Here's a question:
+
+#+BEGIN_SRC python
+reply = QMessageBox.question(self,
+                             "Question",
+                             "CS 2316 is the best, right?!",
+                             QMessageBox.Yes | QMessageBox.No,
+                             QMessageBox.Yes)
+answer = "Yes" if reply == QMessageBox.Yes else "No"
+#+END_SRC
+
+See [[../code/gui/button.py][message_box.py]].
+
+** Events
+
+Some widgets emit events which can be handled. For example, when closing a window:
+#+BEGIN_SRC python
+class MainWindow(QMainWindow):
+
+    def __init__(self):
+        super(MainWindow, self).__init__()
+
+        btn = QPushButton('Quit', self)
+        btn.clicked.connect(QCoreApplication.instance().quit)
+        btn.resize(qbtn.sizeHint())
+        btn.move(50, 50)
+        left, top, width, height = 100, 100, 300, 200
+        self.setGeometry(left, top, width, height)
+        self.setWindowTitle('Quit button')
+
+    def closeEvent(self, event):
+        reply = QMessageBox.question(self,
+                                     "Confirm",
+                                     "Are you sure you want to quit?"
+                                     QMessageBox.Yes | QMessageBox.No,
+                                     QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            event.accept()
+        else:
+            event.ignore()
+#+END_SRC
+
+See [[../code/gui/button.py][quitter.py]].
+
+** Absolute Positioning
+
+
+Previous examples used absolute positioning, for example:
+#+BEGIN_SRC python
+        self.setWindowTitle("Message Box Demo")
+        left, top, width, height = 50, 50, 300, 200
+        self.setGeometry(left, top, width, height)
+
+        info_btn = QPushButton("Information ...", self)
+        info_btn.move(50, 50)
+        info_btn.resize(info_btn.sizeHint())
+#+END_SRC
+
+This is brittle. For example, run [[../code/gui/button.py][message_box.py]] and resize the window to hide the buttons.
+
+** Layout Management
+
+
+#+BEGIN_SRC python
+class MainWindow(QWidget):
+
+    def __init__(self):
+        super(MainWindow, self).__init__()
+        self.setWindowTitle('Count Button')
+        self.count = 0
+
+        self.count_label = QLabel(str(self.count))
+        self.inc_btn = QPushButton('Increment Count')
+        self.inc_btn.clicked.connect(self.inc_count)
+
+        self.vbox = QVBoxLayout()
+        self.vbox.addWidget(self.count_label)
+        self.vbox.addStretch(1)
+        self.vbox.addWidget(self.inc_btn)
+
+        self.setLayout(self.vbox)
+#+END_SRC
+
+** Model-View-Controller
+
+#+BEGIN_SRC python
+        self.list_view = QListView()
+        self.list_model = QStandardItemModel(self.list_view)
+        self.list_view.setModel(self.list_model)
 #+END_SRC
 
 ** Examples
@@ -92,4 +293,6 @@ sys.exit(return_code)
 - [[../code/gui/helloqt.py][helloqt.py]]
 - [[../code/gui/label.py][label.py]]
 - [[../code/gui/button.py][button.py]]
+- [[../code/gui/button.py][message_box.py]]
+- [[../code/gui/button.py][quitter.py]]
 - [[../code/gui/counter.py][counter.py]]
