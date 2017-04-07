@@ -55,6 +55,7 @@ Your script should have a class that represents a GUI object. This class should 
 ### Login Page
 The login page should have 2 labels describing the username and password entry boxes. This page must also have a button that, when clicked checks the credentials and gives a warning message if the username and password combination are not in the database or advances to the next page if they are.
 Also, there should be a button labeled "register" that directs to the registration window.
+![File could not be loaded](login_page.png)
 
 ### Registration
 There should be clearly marked entries for all necessary information to the Students table: username, password, name, major, class standing (year). This information will be inserted into the appropriate database table using a "submit" button or display a message if an error occurs. After registering, the Login Page should be displayed.
