@@ -22,14 +22,14 @@ Courseoff is in a state of disrepair and T-Square is... well, T-Square. You need
 
 You'll store data in a SQLite database and import data from XML and CSV files using a Python script. You will build a GUI using PyQt to allow easy access to relevant information from the database
 ## Files
-[`schedule_schema.sql`](schedule_schema.sql), [`Admins.csv`](Admins.csv), [`Courses.csv`](Courses.csv), [`Students.xml`](Students.xml)
+[`schedule_schema.sql`](schedule_schema.sql), [`admins.csv`](admins.csv), [`courses.csv`](courses.csv), [`students.xml`](students.xml)
 
 ### Preparing Your Database
 
-You've been provided with a database script to create the database (download [`schedule_schema.sql`](schedule_schema.sql)). Run `sqlite3` with the database file name `GTcatalog.db` as an argument and run your database creation script on this database.  This will look something like:
+You've been provided with a database script to create the database (download [`schedule_schema.sql`](schedule_schema.sql)). Run `sqlite3` with the database file name `gt_schedj.db` as an argument and run your database creation script on this database.  This will look something like:
 
 ```sh
-$ sqlite3 GT.db
+$ sqlite3 gt_schedj.db
 SQLite version 3.7.9 2011-11-01 00:52:41
 Enter ".help" for instructions
 Enter SQL statements terminated with a ";"
@@ -37,7 +37,7 @@ sqlite> .read schedule_schema.sql
 sqlite> .exit
 ```
 
-After the session above the current directory will have a file called `GT.db` with empty tables.
+After the session above the current directory will have a file called `gt_schedj.db` with empty tables.
 
 ## Importing XML Data into a Database
 
@@ -69,7 +69,7 @@ The Admin View page should also have a "back" or "logout" button that redirects 
 
 ## Main
 The main function should take in command line arguments and will be called in the following manner:
-`$ python HW6.py GT.db Students.xml Courses.csv Admins.csv`
+`$ python HW6.py gt_schedj.db Students.xml Courses.csv Admins.csv`
 You should then manage your database as necessary using the filenames provided, a connection object, and your `xml_to_db` and `csv_to_db` functions. Then instatiate a GUI object that accepts, as a paramter, the connection object.
 ### Reminder
 Always remember the block of code that allows us to call main from the cmd/terminal.
@@ -77,7 +77,7 @@ Always remember the block of code that allows us to call main from the cmd/termi
 ## Rubric
 - 15 points xml_to_db implemented correctly
 - 15 points csv_to_db implemented correctly
-- 10 points properly create GT.db and populate it
+- 10 points properly create gt_schedj.db and populate it
 - 20 points Login Page works as described and only advances if credentials are valid
 - 20 points Courses Page displays available courses and includes a back button that goes to the Login Page
 - 20 points Admin Page is accesible only to admin users and displays the proper information
@@ -89,7 +89,7 @@ You have been asked to include a scheduler so that students have a viable replac
 
 ### Student Registration feature (15 points)
 Allow students to register for a course by implementing
-- a table in GT.db called `registered` that holds a Student.username and Course.CRN to represent a student being registered for that class.
+- a table in gt_schedj.db called `registered` that holds a Student.username and Course.CRN to represent a student being registered for that class.
 - a button on the Courses Page that says "register" and allows the Student currently logged-in to register for a class (insert a row into the registered table with the values student's username and course CRN).
 
 ### Visual Scheduler (20 points)
@@ -117,7 +117,7 @@ Nobody likes an ugly GUI, so here's a little incentive to make it look nice and 
 
 ## Turn-in Procedure
 
-Submit your `HW6.py` and `GT.db` files on T-Square as attachments.  When you're ready, double-check that you have submitted and not just saved a draft.
+Submit your `HW6.py` and `gt_schedj.db` files on T-Square as attachments.  When you're ready, double-check that you have submitted and not just saved a draft.
 
 ## Verify Your T-Square Submission!
 
