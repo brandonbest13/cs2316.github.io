@@ -55,6 +55,7 @@ Your script should have a class that represents a GUI object. This class should 
 ### Login Page
 The login page should have 2 labels describing the username and password entry boxes. This page must also have a button that, when clicked checks the credentials and gives a warning message if the username and password combination are not in the database or advances to the next page if they are.
 Also, there should be a button labeled "register" that directs to the registration window.
+
 ![File could not be loaded](login_page.png)
 
 ### Registration
@@ -64,8 +65,8 @@ There should be clearly marked entries for all necessary information to the Stud
 This window should list out the available courses and have a back button allowing the user to log out.
 
 ### Admin Page
-Professors are considered Admins and have a special view when they log in. You should have an Admin table using the provided Admins.csv
-If the credentials given on the Login Page do not match a Student, but do match an Admin, the login button should direct to a page title "Admin View" with the number of students currently registered for the course taught by the admin user.
+Professors are considered Admins and have a special view when they log in. You should have an Admin table using the provided admins.csv
+If the credentials given on the Login Page do not match a Student, but do match an Admin, the login button should direct to a page titled "Admin View" with the number of students currently registered for the course taught by the admin user.
 The Admin View page should also have a "back" or "logout" button that redirects to the Login Page so a Student or another Admin can sign in.
 
 ## Main
