@@ -121,7 +121,8 @@
     },
     "sql": {
         "topic": "[SQL](slides/sql.pdf)",
-        "materials": ["Exercise: [Pubs Queries](exercises/pubs-queries.sql)"],
+        "materials": ["Exercise: [Registration Database](exercises/registration-database.html)",
+                     "Exercise: [Pubs Queries](exercises/pubs-queries.sql)"],
         "order": [21,22]
     },
     "python-xml-databases": {
