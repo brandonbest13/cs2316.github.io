@@ -1,5 +1,5 @@
 create table if not exists course (
-  CRN integer primary key,
+  CRN int primary key,
   course_name text not null unique,
   hours int not null,
   days text,
@@ -11,6 +11,7 @@ create table if not exists course (
 
 create table if not exists student (
   username text primary key,
+  password text,
   name text not null,
   major text,
   year text
@@ -25,5 +26,7 @@ create table if not exists registered (
 
 create table if not exists admin (
   adminID text primary key,
+  name text,
+  course_name text,
   password text not null
 );
