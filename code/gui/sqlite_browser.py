@@ -35,6 +35,7 @@ class MainWindow(QMainWindow):
 
     def create_menu_bar(self):
         menu_bar = self.menuBar()
+        menu_bar.setNativeMenuBar(False)
         self.create_file_menu(menu_bar)
 
     def create_file_menu(self, menu_bar):
@@ -47,7 +48,6 @@ class MainWindow(QMainWindow):
         open.setShortcut("Ctrl+O")
         open.setStatusTip("Open a SQLite database")
         open.triggered.connect(self.open_db)
-
 
         file_menu = menu_bar.addMenu("&File")
         file_menu.addAction(open)
