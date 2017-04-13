@@ -167,7 +167,7 @@
         "order": [30,31]
     },
     "review3": {
-        "topic": "Review 3",
+        "topic": "[Review 3](slides/review3.pdf)",
         "materials": [""],
         "order": [32]
     },
@@ -184,7 +184,7 @@
     },
     "python-guis": {
         "topic": "[Python GUIs](slides/pyqt-guis.pdf)",
-        "materials": ["[GUI Example Code](code/gui/)"],
+        "materials": ["[GUI Example Code](https://github.com/cs2316/cs2316.github.io/tree/master/code/gui)"],
         "order": [34, 35, 36]
     },
     "flask": {
