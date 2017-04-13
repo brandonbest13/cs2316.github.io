@@ -128,15 +128,25 @@ Nobody likes an ugly GUI, so here's a little incentive to make it look nice and 
 
 ## Images
 - Login Page
+
 ![File could not be loaded](login_page.png)
+
 - Student Scheduler Page
+
 ![File could not be loaded](student_info_page.png)
+
 - Courses (available to register) Page
+
 ![File could not be loaded](register_courses_page.png)
+
 - Admin Page
+
 ![File could not be loaded](admin_page.png)
+
 - Add Course Page
+
 ![File could not be loaded](add_course_page.png)
+
 
 ## Tips
 
