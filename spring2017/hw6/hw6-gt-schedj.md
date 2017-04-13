@@ -60,9 +60,8 @@ Your script should have a class that represents a GUI object. This class should 
 The login page should have 2 labels describing the username and password entry boxes. This page must also have a button that, when clicked checks the credentials and gives a warning message if the username and password combination are not in the database or advances to the next page if they are.
 Also, there should be a button labeled "register" that directs to the registration window.
 
-![File could not be loaded](login_page.png)
 
-### Registration
+### (Student) User Registration
 
 There should be clearly marked entries for all necessary information to the Students table: username, password, name, major, class standing (year). This information will be inserted into the appropriate database table using a "submit" button or display a message if an error occurs. After registering, the Login Page should be displayed.
 
@@ -127,12 +126,25 @@ Admin Users (Professors) should also be able to add a course to the listing in t
 
 Nobody likes an ugly GUI, so here's a little incentive to make it look nice and pretty. (niceness and prettiness are at the discretion of your grading TA, so consider your audience)
 
+## Images
+- Login Page
+![File could not be loaded](login_page.png)
+- Student Scheduler Page
+![File could not be loaded](student_info_page.png)
+- Courses (available to register) Page
+![File could not be loaded](register_courses_page.png)
+- Admin Page
+![File could not be loaded](admin_page.png)
+- Add Course Page
+![File could not be loaded](add_course_page.png)
+
 ## Tips
 
 - Review the [example SQL code](https://github.com/cs2316/cs2316.github.io/tree/master/code/databases) on the course web site.
 - The Weekly View can be as 'pretty' as anything from Oscar's Week-at-a-glance to Courseoff
 - For the Aesthetic Appeal component, consider using different colors, fonts, and maybe even images (just remember to submit all necessary files when you submit the hw to T-Square).
 - If you are confused as to what should be passed to the database to insert or request information, try checking the schedule_schema.sql file.
+- The images are for reference and not necessarily how we want it to look. We have simply outlined a possible layout to make features work as expected.
 
 ## Turn-in Procedure
 
