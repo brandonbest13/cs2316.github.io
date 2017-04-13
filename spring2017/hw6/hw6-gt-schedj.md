@@ -133,19 +133,19 @@ Nobody likes an ugly GUI, so here's a little incentive to make it look nice and 
 
 - Student Scheduler Page
 
-![File could not be loaded](student_info_page.png)
+![File could not be loaded](student_info_page.PNG)
 
 - Courses (available to register) Page
 
-![File could not be loaded](register_courses_page.png)
+![File could not be loaded](register_courses_page.PNG)
 
 - Admin Page
 
-![File could not be loaded](admin_page.png)
+![File could not be loaded](admin_page.PNG)
 
 - Add Course Page
 
-![File could not be loaded](add_course_page.png)
+![File could not be loaded](add_course_page.PNG)
 
 
 ## Tips
