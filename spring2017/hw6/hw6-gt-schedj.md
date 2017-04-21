@@ -71,9 +71,7 @@ This window should list out the available courses and have a back button allowin
 
 ### Admin Page
 
-Professors are considered Admins and have a special view when they log in. You should have an Admin table using the provided admins.csv
-If the credentials given on the Login Page do not match a Student, but do match an Admin, the login button should direct to a page titled "Admin View" with the number of students currently registered for the course taught by the admin user.
-The Admin View page should also have a "back" or "logout" button that redirects to the Login Page so a Student or another Admin can sign in.
+--Moved to extra Credit--
 
 ## Main
 
@@ -87,12 +85,11 @@ Always remember the block of code that allows us to call main from the cmd/termi
 
 ## Rubric
 
-- 15 points xml_to_db implemented correctly
-- 15 points csv_to_db implemented correctly
+- 20 points xml_to_db implemented correctly
+- 20 points csv_to_db implemented correctly
 - 10 points properly create gt_schedj.db and populate it
-- 20 points Login Page works as described and only advances if credentials are valid
-- 20 points Courses Page displays available courses and includes a back button that goes to the Login Page
-- 20 points Admin Page is accesible only to admin users and displays the proper information
+- 25 points Login Page works as described and only advances if credentials are valid
+- 25 points Courses Page displays available courses and includes a back button that goes to the Login Page
 
 # Extra Credit
 
@@ -100,29 +97,35 @@ Always remember the block of code that allows us to call main from the cmd/termi
 
 You have been asked to include a scheduler so that students have a viable replacement for Courseoff and Oscar. The following are requested:
 
-### Student Registration feature (15 points)
+### Student-Course Registration feature (15 points)
 
 Allow students to register for a course by implementing
 - a table in gt_schedj.db called `registered` that holds a Student.username and Course.CRN to represent a student being registered for that class.
 - a button on the Courses Page that says "register" and allows the Student currently logged-in to register for a class (insert a row into the registered table with the values student's username and course CRN).
 
-### Visual Scheduler (20 points)
+### Visual Scheduler
 
-A button on the Courses Page labeled "Weekly View" should bring up a window that shows what the student schedule looks like based on the courses that are currently in the registered table matching the logged-in Student's username.
+--Redacted-- But if you implemented it, there will be compensation
 
-### Implement Restrictions (25 points)
+### Implement Restrictions (20 points)
 
 Included in the Courses.csv are restrictions for major and year; a student must also have less than or equal to 21 credit hours and no overlapping class times. If the current student tries to register for a course does not meet those 4 restriction requirements, your program should present a warning message; and the registration for that course should fail.
 - 5 points for each type of restriction properly implemented
 - 5 points for the warning message giving the specific kind of restriction that caused conflict.
 
-### Admin Utility (30 points)
+### Admin Utility[Basic] (20)
+
+Professors are considered Admins and have a special view when they log in. You should have an Admin table using the provided admins.csv
+If the credentials given on the Login Page do not match a Student, but do match an Admin, the login button should direct to a page titled "Admin View" with the number of students currently registered for the course taught by the admin user.
+The Admin View page should also have a "back" or "logout" button that redirects to the Login Page so a Student or another Admin can sign in.
+
+### Admin Utility[Advanced] (30 points)
 
 Professors want to be able to do more than just view registration for their class.
 They want to have a page that lets them see registration numbers for all classes. Similar to the Student view, but including the total number of students registered for each class.
 Admin Users (Professors) should also be able to add a course to the listing in the database. So an Admin should see a button labeled "add course" that uses text entry boxes to gather necessary information and insert a new course into the database.
 
-### Aesthetic Appeal (10 points)
+### Aesthetic Appeal (15 points)
 
 Nobody likes an ugly GUI, so here's a little incentive to make it look nice and pretty. (niceness and prettiness are at the discretion of your grading TA, so consider your audience)
 
